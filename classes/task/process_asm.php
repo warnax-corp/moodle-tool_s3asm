@@ -77,7 +77,7 @@ class process_asm extends \core\task\scheduled_task {
         $zip = new ZipArchive();
         $res = $zip->open($zip_file, ZipArchive::CREATE);
         foreach ($files as $file) {
-            $zip->addFile($file);
+            $zip->addFile($file[0], $file[1]);
         }
         $zip->close();
     }
@@ -198,7 +198,16 @@ class process_asm extends \core\task\scheduled_task {
             list ($tempfile_2, $fp2) = $this->get_temp_file();
             list ($tempfile_3, $fp3) = $this->get_temp_file();
 
-            $files = [$tempfile_1, $tempfile_2];
+            $files = [
+                [
+                    $tempfile_1,
+                    "_students.csv"
+                ],
+                [
+                    $tempfile_2,
+                    "_mentors.csv"
+                ]
+            ];
 
             $this->generate_zip($tempfile_3, $files);
 
