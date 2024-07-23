@@ -25,18 +25,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'S3 Log Archiver';
-$string['pluginnamedesc'] = 'Moodle to Amazon S3 Log Archiver';
+$string['pluginname'] = 'S3 AsM Exporter';
+$string['pluginnamedesc'] = 'Moodle to Amazon S3 AsM Exporter';
 
 $string['archivesettings'] = 'Log Archive Settings';
 $string['awss3settings'] = 'Amazon S3 Settings';
 $string['awss3settings_desc'] = 'Settings for AWS and S3 access';
 $string['bucket'] = 'Bucket';
 $string['bucket_desc'] = 'The name of the bucket to store the logs in.';
-$string['checkstatus'] = 'S3 Log Archiver status';
+$string['checkstatus'] = 'S3 AsM Exporter status';
 $string['connectionsuccess'] = 'Could establish connection to the S3 storage.';
 $string['connectionfailure'] = 'Could not establish connection to S3 storage. {$a}';
-$string['enable'] = 'Enable log archiver';
+$string['enable'] = 'Enable AsM Exporter';
 $string['enable_desc'] = 'Enable log archive tasks Help with Enable log archive tasks';
 $string['generalsettings'] = 'General Settings';
 $string['keyid'] = 'Key ID';

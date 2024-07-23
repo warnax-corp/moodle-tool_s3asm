@@ -1,7 +1,7 @@
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/catalyst/moodle-tool_s3asm/ci/master)
 
 
-# Moodle to Amazon S3 Log Archiver #
+# Moodle to Amazon S3 AsM Exporter #
 
 This plugin will take entries from teh Moodle standard log store table and export them to AWS S3.
 
@@ -23,7 +23,7 @@ This plugin currently supports Moodle:
 3. Run the upgrade: `sudo -u www-data php admin/cli/upgrade` **Note:** the user may be different to www-data on your system.
 
 ## Configuration
-1. Configure the plugin in *Site administration > Plugins > Admin Tools > S3 log archiver*.
+1. Configure the plugin in *Site administration > Plugins > Admin Tools > S3 AsM Exporter*.
 2. The schedule for the plugin task can be altered at *Site administration > Server > Scheduled tasks*
 3. The scheduled task can also be run manually from your *moodledir*. `sudo -u www-data php admin/tool/task/cli/schedule_task.php --execute=\\tool_s3asm\\task\\process_asm`  **Note:** the user may be different to www-data on your system.
 
