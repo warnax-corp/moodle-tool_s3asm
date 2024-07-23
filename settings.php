@@ -63,10 +63,15 @@ if ($hassiteconfig) {
         //         get_string('maxruntime_desc', 'tool_s3asm'),
         //         '86400'));
 
-        // Log Archive settings.
-        // $settings->add(new admin_setting_heading('tool_s3asm_archive',
-        //         get_string('archivesettings', 'tool_s3asm'),
-        //         ''));
+        // AsM settings.
+        $settings->add(new admin_setting_heading('tool_s3asm_archive',
+                get_string('archivesettings', 'tool_s3asm'),
+                ''));
+
+        $settings->add(new admin_setting_configtext('tool_s3asm/asmid',
+                get_string('asmid', 'tool_s3asm' ),
+                get_string('asmid_desc', 'tool_s3asm'),
+                '', PARAM_TEXT));
 
         // $settings->add(new admin_setting_configtext('tool_s3asm/maxlogage',
         //         get_string('maxlogage', 'tool_s3asm' ),
@@ -92,10 +97,10 @@ if ($hassiteconfig) {
                 get_string('bucket_desc', 'tool_s3asm'),
                 '', PARAM_TEXT));
 
-        $settings->add(new admin_setting_configtext('tool_s3asm/prefix',
-                get_string('prefix', 'tool_s3asm' ),
-                get_string('prefix_desc', 'tool_s3asm'),
-                '', PARAM_TEXT));
+        // $settings->add(new admin_setting_configtext('tool_s3asm/prefix',
+        //         get_string('prefix', 'tool_s3asm' ),
+        //         get_string('prefix_desc', 'tool_s3asm'),
+        //         '', PARAM_TEXT));
 
         $settings->add(new admin_setting_configtext('tool_s3asm/keyid',
                 get_string('keyid', 'tool_s3asm' ),

@@ -194,6 +194,8 @@ class process_asm extends \core\task\scheduled_task {
 
             // $recordids = [1, 2, 3];
 
+            $asmid = $config->asmid;
+
             list ($tempfile_1, $fp1) = $this->get_temp_file();
             list ($tempfile_2, $fp2) = $this->get_temp_file();
             list ($tempfile_3, $fp3) = $this->get_temp_file();
@@ -201,17 +203,17 @@ class process_asm extends \core\task\scheduled_task {
             $files = [
                 [
                     $tempfile_1,
-                    "_students.csv"
+                    $asmid . "_students.csv"
                 ],
                 [
                     $tempfile_2,
-                    "_mentors.csv"
+                    $asmid . "_mentors.csv"
                 ]
             ];
 
             $this->generate_zip($tempfile_3, $files);
 
-            $prefix = $config->prefix;
+            $prefix = "receive/" + $asmid + "/";
             $this->upload_zip($tempfile_3, $prefix);
 
             // if (!empty($recordids)) {
