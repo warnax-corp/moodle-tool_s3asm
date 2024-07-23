@@ -17,6 +17,7 @@
 namespace tool_s3asm\task;
 
 use tool_s3asm\local\client\s3_client;
+use ZipArchive;
 
 /**
  * Class to process logs.
@@ -70,6 +71,15 @@ class process_asm extends \core\task\scheduled_task {
         $result = fputcsv($fp, $headers);
 
         return $result;
+    }
+
+    private function generate_zip($zip_file, $files) {
+        $zip = new ZipArchive();
+        $res = $zip->open($zip_file, ZipArchive::CREATE);
+        foreach ($files as $file) {
+            $zip->addFile($file);
+        }
+        $zip->close();
     }
 
     /**
@@ -142,6 +152,14 @@ class process_asm extends \core\task\scheduled_task {
         }
     }
 
+    private function upload_zip($zip_file) {
+        $s3client = new s3_client();
+        $keyname = 'csv_' . date('Ymd'). '.zip';
+        $s3url = $s3client->upload_file($zip_file, $keyname);
+
+        return $s3url;
+    }
+
     /**
      * {@inheritDoc}
      * @see \core\task\task_base::execute()
@@ -169,37 +187,47 @@ class process_asm extends \core\task\scheduled_task {
 
             // Extract records from DB and add them to the temp file.
             mtrace('Finding records and updating temporary file...');
-            $starttime = time();
+            // $starttime = time();
             // $recordids = $this->extract_records($stopat, $maxage, $fp);
             fclose($fp); // Close file now that we have it.
-            $elapsedtime = time() - $starttime;
+            // $elapsedtime = time() - $starttime;
 
-            $recordids = [1, 2, 3];
+            // $recordids = [1, 2, 3];
 
-            if (!empty($recordids)) {
-                // If file isn't empty upload this file to s3.
-                $numrecords = count($recordids);
-                $firstrecord = min($recordids);
-                $lastrecord = max($recordids);
+            list ($tempfile_1, $fp1) = $this->get_temp_file();
+            list ($tempfile_2, $fp2) = $this->get_temp_file();
+            list ($tempfile_3, $fp3) = $this->get_temp_file();
 
-                $keyname = $config->prefix . '_' . date('YmdHis'). '_' . $firstrecord . '_' . $lastrecord . '.csv';
-                mtrace('Extracting records from DB took: ' . $elapsedtime . ' seconds...');
-                mtrace('Uploading ' . $numrecords . ' records to S3...');
+            $files = [$tempfile_1, $tempfile_2];
 
-                $s3client = new s3_client();
-                $s3url = $s3client->upload_file($tempfile, $keyname);
+            $this->generate_zip($tempfile_3, $files);
 
-                if (!$s3url) {
-                    throw new \moodle_exception('s3uploadfailed', 'tool_s3asm', '');
-                } else {
-                    mtrace('Uploaded file name: '. $keyname);
-                    // Delete the processed records from the log table.
-                    mtrace('Deleting ' . $numrecords. ' records from DB...');
-                    $this->delete_records($recordids);
-                }
-            } else {
-                mtrace('No records found to process, finishing...');
-            }
+            $this->upload_zip($tempfile_3);
+
+            // if (!empty($recordids)) {
+            //     // If file isn't empty upload this file to s3.
+            //     $numrecords = count($recordids);
+            //     $firstrecord = min($recordids);
+            //     $lastrecord = max($recordids);
+
+            //     $keyname = $config->prefix . '_' . date('YmdHis'). '_' . $firstrecord . '_' . $lastrecord . '.csv';
+            //     mtrace('Extracting records from DB took: ' . $elapsedtime . ' seconds...');
+            //     mtrace('Uploading ' . $numrecords . ' records to S3...');
+
+            //     $s3client = new s3_client();
+            //     $s3url = $s3client->upload_file($tempfile, $keyname);
+
+            //     if (!$s3url) {
+            //         throw new \moodle_exception('s3uploadfailed', 'tool_s3asm', '');
+            //     } else {
+            //         mtrace('Uploaded file name: '. $keyname);
+            //         // Delete the processed records from the log table.
+            //         mtrace('Deleting ' . $numrecords. ' records from DB...');
+            //         $this->delete_records($recordids);
+            //     }
+            // } else {
+            //     mtrace('No records found to process, finishing...');
+            // }
         }
     }
 }

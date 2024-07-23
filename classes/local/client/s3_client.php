@@ -125,7 +125,7 @@ class s3_client {
                 'Bucket' => $this->config->bucket,
                 'Key' => $keyname,
                 'SourceFile' => $filepath,
-                'ContentType' => 'text/csv'
+                'ContentType' => 'application/zip'
             ]);
             $s3url = $result['ObjectURL'];
         }
