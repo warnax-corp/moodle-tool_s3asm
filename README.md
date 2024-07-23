@@ -52,7 +52,7 @@ https://www.catalyst-au.net/contact-us
 
 ## License ##
 
-2017 Matt Porritt <mattp@catalyst-au.net>
+2024 WARNAX Corp. <kosuke@warnax.co.jp>
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

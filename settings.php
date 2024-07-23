@@ -19,7 +19,7 @@
  *
  * @package     tool_s3asm
  * @category    admin
- * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
+ * @copyright   2024 WARNAX Corp. <kosuke@warnax.co.jp>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -58,25 +58,25 @@ if ($hassiteconfig) {
                 get_string('enable', 'tool_s3asm'),
                 get_string('enable_desc', 'tool_s3asm'), 0));
 
-        $settings->add(new admin_setting_configduration('tool_s3asm/maxruntime',
-                get_string('maxruntime', 'tool_s3asm' ),
-                get_string('maxruntime_desc', 'tool_s3asm'),
-                '86400'));
+        // $settings->add(new admin_setting_configduration('tool_s3asm/maxruntime',
+        //         get_string('maxruntime', 'tool_s3asm' ),
+        //         get_string('maxruntime_desc', 'tool_s3asm'),
+        //         '86400'));
 
         // Log Archive settings.
-        $settings->add(new admin_setting_heading('tool_s3asm_archive',
-                get_string('archivesettings', 'tool_s3asm'),
-                ''));
+        // $settings->add(new admin_setting_heading('tool_s3asm_archive',
+        //         get_string('archivesettings', 'tool_s3asm'),
+        //         ''));
 
-        $settings->add(new admin_setting_configtext('tool_s3asm/maxlogage',
-                get_string('maxlogage', 'tool_s3asm' ),
-                get_string('maxlogage_desc', 'tool_s3asm'),
-                18, PARAM_INT));
+        // $settings->add(new admin_setting_configtext('tool_s3asm/maxlogage',
+        //         get_string('maxlogage', 'tool_s3asm' ),
+        //         get_string('maxlogage_desc', 'tool_s3asm'),
+        //         18, PARAM_INT));
 
-        $settings->add(new admin_setting_configtext('tool_s3asm/prefix',
-                get_string('prefix', 'tool_s3asm' ),
-                get_string('prefix_desc', 'tool_s3asm'),
-                '', PARAM_ALPHA));
+        // $settings->add(new admin_setting_configtext('tool_s3asm/prefix',
+        //         get_string('prefix', 'tool_s3asm' ),
+        //         get_string('prefix_desc', 'tool_s3asm'),
+        //         '', PARAM_ALPHA));
 
         // AWS Bucket and S3 settings.
         $settings->add(new admin_setting_heading('tool_s3asm_awss3',

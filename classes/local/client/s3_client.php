@@ -18,7 +18,7 @@
  * S3 Client helper class.
  *
  * @package     tool_s3asm
- * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
+ * @copyright   2024 WARNAX Corp. <kosuke@warnax.co.jp>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -34,7 +34,7 @@ use Aws\S3\S3Client;
  * S3 Client helper class.
  *
  * @package     tool_s3asm
- * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
+ * @copyright   2024 WARNAX Corp. <kosuke@warnax.co.jp>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class s3_client {
