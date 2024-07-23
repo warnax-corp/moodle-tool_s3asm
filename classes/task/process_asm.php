@@ -213,7 +213,7 @@ class process_asm extends \core\task\scheduled_task {
 
             $this->generate_zip($tempfile_3, $files);
 
-            $prefix = "receive/" + $asmid + "/";
+            $prefix = "receive/" . $asmid . "/";
             $this->upload_zip($tempfile_3, $prefix);
 
             // if (!empty($recordids)) {
