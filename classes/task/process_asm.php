@@ -152,9 +152,9 @@ class process_asm extends \core\task\scheduled_task {
         }
     }
 
-    private function upload_zip($zip_file) {
+    private function upload_zip($zip_file, $prefix) {
         $s3client = new s3_client();
-        $keyname = 'csv_' . date('Ymd'). '.zip';
+        $keyname = $prefix . 'csv_' . date('Ymd'). '.zip';
         $s3url = $s3client->upload_file($zip_file, $keyname);
 
         return $s3url;
@@ -211,7 +211,8 @@ class process_asm extends \core\task\scheduled_task {
 
             $this->generate_zip($tempfile_3, $files);
 
-            $this->upload_zip($tempfile_3);
+            $prefix = $config->prefix;
+            $this->upload_zip($tempfile_3, $prefix);
 
             // if (!empty($recordids)) {
             //     // If file isn't empty upload this file to s3.

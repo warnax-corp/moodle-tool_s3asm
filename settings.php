@@ -92,6 +92,11 @@ if ($hassiteconfig) {
                 get_string('bucket_desc', 'tool_s3asm'),
                 '', PARAM_TEXT));
 
+        $settings->add(new admin_setting_configtext('tool_s3asm/prefix',
+                get_string('prefix', 'tool_s3asm' ),
+                get_string('prefix_desc', 'tool_s3asm'),
+                '', PARAM_TEXT));
+
         $settings->add(new admin_setting_configtext('tool_s3asm/keyid',
                 get_string('keyid', 'tool_s3asm' ),
                 get_string('keyid_desc', 'tool_s3asm'),
