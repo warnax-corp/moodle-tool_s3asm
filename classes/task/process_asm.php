@@ -45,8 +45,8 @@ class process_asm extends \core\task\scheduled_task {
      * @return array File name and file pointer.
      */
     private function get_temp_file() {
-        $tempdir = make_temp_directory('s3logs_upload');
-        $tempfile = tempnam ($tempdir, 's3logs_');
+        $tempdir = make_temp_directory('s3asm_upload');
+        $tempfile = tempnam ($tempdir, 's3asm_');
         $fp = fopen($tempfile, 'w');
 
         return array ($tempfile, $fp);
@@ -153,8 +153,8 @@ class process_asm extends \core\task\scheduled_task {
             mtrace('Log archive tasks are disabled.');
         } else {
             // Set up basic vars.
-            $maxage = 60 * 60 * 24 * 30 * $config->maxlogage; // We standardise on a month having 30 days.
-            $stopat = time() + $config->maxruntime;
+            // $maxage = 60 * 60 * 24 * 30 * $config->maxlogage; // We standardise on a month having 30 days.
+            // $stopat = time() + $config->maxruntime;
 
             // Get a temp file.
             mtrace('Getting temporary file...');
@@ -162,17 +162,19 @@ class process_asm extends \core\task\scheduled_task {
 
             // Add the table headers to the temp file.
             mtrace('Writing table headers to temporary file...');
-            $headerwrite = $this->write_file_headers($fp);
-            if (!$headerwrite) {
-                throw new \moodle_exception('noheaders', 'tool_s3asm', '');
-            }
+            // $headerwrite = $this->write_file_headers($fp);
+            // if (!$headerwrite) {
+            //     throw new \moodle_exception('noheaders', 'tool_s3asm', '');
+            // }
 
             // Extract records from DB and add them to the temp file.
             mtrace('Finding records and updating temporary file...');
             $starttime = time();
-            $recordids = $this->extract_records($stopat, $maxage, $fp);
+            // $recordids = $this->extract_records($stopat, $maxage, $fp);
             fclose($fp); // Close file now that we have it.
             $elapsedtime = time() - $starttime;
+
+            $recordids = [1, 2, 3];
 
             if (!empty($recordids)) {
                 // If file isn't empty upload this file to s3.
