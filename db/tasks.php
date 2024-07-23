@@ -17,7 +17,7 @@
 /**
  * Task to process logs.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @category    task
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,11 +27,11 @@ defined('MOODLE_INTERNAL') || die();
 
 $tasks = array(
         array(
-                'classname' => 'tool_s3logs\task\process_logs',
+                'classname' => 'tool_s3asm\task\process_asm',
                 'blocking' => 0,
-                'minute' => '01',
-                'hour' => '01',
-                'dayofweek' => '6',
+                'minute' => 0,
+                'hour' => 3,
+                'dayofweek' => '*',
                 'month' => '*'
         )
 );

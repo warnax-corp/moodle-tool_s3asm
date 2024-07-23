@@ -17,7 +17,7 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @category    string
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -58,10 +58,10 @@ $string['secretkey'] = 'Secret Key';
 $string['secretkey_desc'] = 'The AWS secret key used to make AWS API calls for S3';
 $string['permissioncheckpassed'] = 'Permissions check passed.';
 $string['privacy:metadata'] = 's3logs tool export Moodle standard log for archiving purposes';
-$string['privacy:metadata:tool_s3logs:realuserid'] = 'The ID of the real user behind the event, when masquerading a user.';
-$string['privacy:metadata:tool_s3logs:relateduserid'] = 'The ID of a user related to an event';
-$string['privacy:metadata:tool_s3logs:userid'] = 'The ID of the user who triggered an event';
-$string['privacy:metadata:tool_s3logs:externalpurpose'] = 's3logs tool exports Moodle standard log records for archiving purposes';
+$string['privacy:metadata:tool_s3asm:realuserid'] = 'The ID of the real user behind the event, when masquerading a user.';
+$string['privacy:metadata:tool_s3asm:relateduserid'] = 'The ID of a user related to an event';
+$string['privacy:metadata:tool_s3asm:userid'] = 'The ID of the user who triggered an event';
+$string['privacy:metadata:tool_s3asm:externalpurpose'] = 's3logs tool exports Moodle standard log records for archiving purposes';
 $string['usesdkcreds'] = 'Use the default credential provider chain to find AWS credentials';
 $string['usesdkcreds_desc'] = 'If Moodle is hosted inside AWS, the default credential chain can be used for access to s3 logs.';
 $string['writefailure'] = 'Could not write object to the S3 storage. {$a}';

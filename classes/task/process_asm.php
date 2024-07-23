@@ -14,19 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace tool_s3logs\task;
+namespace tool_s3asm\task;
 
-use tool_s3logs\local\client\s3_client;
+use tool_s3asm\local\client\s3_client;
 
 /**
  * Class to process logs.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @category    task
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class process_logs extends \core\task\scheduled_task {
+class process_asm extends \core\task\scheduled_task {
 
     /**
      * {@inheritDoc}
@@ -34,7 +34,7 @@ class process_logs extends \core\task\scheduled_task {
      */
     public function get_name() {
         // Shown in admin screens.
-        return get_string('processlogs', 'tool_s3logs');
+        return get_string('processlogs', 'tool_s3asm');
     }
 
     /**
@@ -147,7 +147,7 @@ class process_logs extends \core\task\scheduled_task {
      * @see \core\task\task_base::execute()
      */
     public function execute() {
-        $config = get_config('tool_s3logs');
+        $config = get_config('tool_s3asm');
 
         if (empty($config->enable)) {
             mtrace('Log archive tasks are disabled.');
@@ -164,7 +164,7 @@ class process_logs extends \core\task\scheduled_task {
             mtrace('Writing table headers to temporary file...');
             $headerwrite = $this->write_file_headers($fp);
             if (!$headerwrite) {
-                throw new \moodle_exception('noheaders', 'tool_s3logs', '');
+                throw new \moodle_exception('noheaders', 'tool_s3asm', '');
             }
 
             // Extract records from DB and add them to the temp file.
@@ -188,7 +188,7 @@ class process_logs extends \core\task\scheduled_task {
                 $s3url = $s3client->upload_file($tempfile, $keyname);
 
                 if (!$s3url) {
-                    throw new \moodle_exception('s3uploadfailed', 'tool_s3logs', '');
+                    throw new \moodle_exception('s3uploadfailed', 'tool_s3asm', '');
                 } else {
                     mtrace('Uploaded file name: '. $keyname);
                     // Delete the processed records from the log table.

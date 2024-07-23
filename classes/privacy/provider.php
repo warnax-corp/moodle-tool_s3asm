@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace tool_s3logs\privacy;
+namespace tool_s3asm\privacy;
 
 use core_privacy\local\request\contextlist;
 use core_privacy\local\metadata\collection;
@@ -23,9 +23,9 @@ use core_privacy\local\request\approved_userlist;
 use core_privacy\local\request\userlist;
 
 /**
- * Privacy Subsystem implementation for tool_s3logs.
+ * Privacy Subsystem implementation for tool_s3asm.
  *
- * @package    tool_s3logs
+ * @package    tool_s3asm
  * @copyright  2018 Nathan Nguyen <nathannguyen@catalyst-net.au>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -42,10 +42,10 @@ class provider implements
      */
     public static function get_metadata(collection $collection) : collection {
         $collection->add_external_location_link('s3logs', [
-            'userid' => 'privacy:metadata:tool_s3logs:userid',
-            'relateduserid' => 'privacy:metadata:tool_s3logs:relateduserid',
-            'realuserid' => 'privacy:metadata:tool_s3logs:realuserid',
-        ], 'privacy:metadata:tool_s3logs:externalpurpose');
+            'userid' => 'privacy:metadata:tool_s3asm:userid',
+            'relateduserid' => 'privacy:metadata:tool_s3asm:relateduserid',
+            'realuserid' => 'privacy:metadata:tool_s3asm:realuserid',
+        ], 'privacy:metadata:tool_s3asm:externalpurpose');
 
         return $collection;
     }

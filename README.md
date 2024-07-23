@@ -1,4 +1,4 @@
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/catalyst/moodle-tool_s3logs/ci/master)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/catalyst/moodle-tool_s3asm/ci/master)
 
 
 # Moodle to Amazon S3 Log Archiver #
@@ -25,7 +25,7 @@ This plugin currently supports Moodle:
 ## Configuration
 1. Configure the plugin in *Site administration > Plugins > Admin Tools > S3 log archiver*.
 2. The schedule for the plugin task can be altered at *Site administration > Server > Scheduled tasks*
-3. The scheduled task can also be run manually from your *moodledir*. `sudo -u www-data php admin/tool/task/cli/schedule_task.php --execute=\\tool_s3logs\\task\\process_logs`  **Note:** the user may be different to www-data on your system.
+3. The scheduled task can also be run manually from your *moodledir*. `sudo -u www-data php admin/tool/task/cli/schedule_task.php --execute=\\tool_s3asm\\task\\process_asm`  **Note:** the user may be different to www-data on your system.
 
 
 # Crafted by Catalyst IT
@@ -42,7 +42,7 @@ https://www.catalyst-au.net/
 
 Issues, and pull requests using github are welcome and encouraged! 
 
-https://github.com/catalyst/moodle-tool_s3logs/issues
+https://github.com/catalyst/moodle-tool_s3asm/issues
 
 If you would like commercial support or would like to sponsor additional improvements
 to this plugin please contact us:

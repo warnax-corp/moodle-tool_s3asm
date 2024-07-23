@@ -17,25 +17,25 @@
 /**
  * Lib functions.
  *
- * @package    tool_s3logs
+ * @package    tool_s3asm
  * @author     Dmitrii Metelkin <dmitriim@catalyst-au.net>
  * @copyright  Catalyst IT
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use tool_s3logs\local\client\s3_client;
+use tool_s3asm\local\client\s3_client;
 
 /**
- * Get status checks for tool_s3logs.
+ * Get status checks for tool_s3asm.
  *
  * @return array
  */
-function tool_s3logs_status_checks(): array {
+function tool_s3asm_status_checks(): array {
     $client = new s3_client();
 
     if ($client->is_configured()) {
         return [
-            new tool_s3logs\check\status()
+            new tool_s3asm\check\status()
         ];
     }
 

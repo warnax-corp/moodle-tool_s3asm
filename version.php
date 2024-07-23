@@ -17,14 +17,14 @@
 /**
  * Plugin version and other meta-data are defined here.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'tool_s3logs';
+$plugin->component = 'tool_s3asm';
 $plugin->version = 2022081101;
 $plugin->release = 2022081101;
 $plugin->requires = 2017051509;

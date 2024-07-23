@@ -17,12 +17,12 @@
 /**
  * S3 Client helper class.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace tool_s3logs\local\client;
+namespace tool_s3asm\local\client;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -33,7 +33,7 @@ use Aws\S3\S3Client;
 /**
  * S3 Client helper class.
  *
- * @package     tool_s3logs
+ * @package     tool_s3asm
  * @copyright   2017 Matt Porritt <mattp@catalyst-au.net>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -59,7 +59,7 @@ class s3_client {
      * @return void
      */
     public function __construct() {
-        $this->config = get_config('tool_s3logs');
+        $this->config = get_config('tool_s3asm');
         $this->set_client();
     }
 
@@ -144,10 +144,10 @@ class s3_client {
         $output = '';
         $connection = $this->test_connection();
         if ($connection->success) {
-            $output .= $OUTPUT->notification(get_string('connectionsuccess', 'tool_s3logs'), 'success');
+            $output .= $OUTPUT->notification(get_string('connectionsuccess', 'tool_s3asm'), 'success');
             $output .= $this->get_permissions_check_status();
         } else {
-            $output .= $OUTPUT->notification(get_string('connectionfailure', 'tool_s3logs', $connection->details), 'error');
+            $output .= $OUTPUT->notification(get_string('connectionfailure', 'tool_s3asm', $connection->details), 'error');
         }
 
         return $output;
@@ -169,10 +169,10 @@ class s3_client {
 
             $connection = $this->test_connection();
             if ($connection->success) {
-                $output .= $OUTPUT->notification(get_string('sdkcredsok', 'tool_s3logs'), 'success');
+                $output .= $OUTPUT->notification(get_string('sdkcredsok', 'tool_s3asm'), 'success');
                 $output .= $this->get_permissions_check_status();
             } else {
-                $output .= $OUTPUT->notification(get_string('sdkcredserror', 'tool_s3logs'), 'warning');
+                $output .= $OUTPUT->notification(get_string('sdkcredserror', 'tool_s3asm'), 'warning');
             }
 
             // Revert the client.
@@ -217,7 +217,7 @@ class s3_client {
         try {
             if (!$this->is_functional()) {
                 $connection->success = false;
-                $connection->details = get_string('notconfigured', 'tool_s3logs');
+                $connection->details = get_string('notconfigured', 'tool_s3asm');
             } else {
                 $this->client->headBucket(array('Bucket' => $this->config->bucket));
             }
@@ -258,12 +258,12 @@ class s3_client {
                 ]);
             } catch (\Aws\S3\Exception\S3Exception $e) {
                 $details = $this->get_exception_details($e);
-                $permissions->messages[get_string('writefailure', 'tool_s3logs', $details)] = 'error';
+                $permissions->messages[get_string('writefailure', 'tool_s3asm', $details)] = 'error';
                 $permissions->success = false;
             }
 
             if ($permissions->success) {
-                $permissions->messages[get_string('permissioncheckpassed', 'tool_s3logs')] = 'success';
+                $permissions->messages[get_string('permissioncheckpassed', 'tool_s3asm')] = 'success';
             }
         }
 
