@@ -264,6 +264,16 @@ class s3_client {
 
             if ($permissions->success) {
                 $permissions->messages[get_string('permissioncheckpassed', 'tool_s3asm')] = 'success';
+                $result = $this->client->deleteObjects([
+                    'Bucket' => $this->config->bucket,
+                    'Delete' => [
+                        'Objects' => [
+                            [
+                                'Key' => 'permissions_check_file'
+                            ]
+                        ]
+                    ]
+                ]);
             }
         }
 
