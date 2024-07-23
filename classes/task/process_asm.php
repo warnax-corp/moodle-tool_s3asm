@@ -35,7 +35,7 @@ class process_asm extends \core\task\scheduled_task {
      */
     public function get_name() {
         // Shown in admin screens.
-        return get_string('processlogs', 'tool_s3asm');
+        return get_string('processasm', 'tool_s3asm');
     }
 
     /**

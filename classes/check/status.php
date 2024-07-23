@@ -62,7 +62,7 @@ class status extends check {
 
         // All configured, but disabled.
         if (empty(get_config('tool_s3asm', 'enable'))) {
-            return new result(result::WARNING, get_string('logarchiverdisabled', 'tool_s3asm'));
+            return new result(result::WARNING, get_string('asmdisabled', 'tool_s3asm'));
         }
 
         return new result(result::OK, get_string('connectionsuccess', 'tool_s3asm'));

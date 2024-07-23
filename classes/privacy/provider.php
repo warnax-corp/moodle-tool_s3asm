@@ -41,7 +41,7 @@ class provider implements
      * @return  collection A listing of user data stored through this system.
      */
     public static function get_metadata(collection $collection) : collection {
-        $collection->add_external_location_link('s3logs', [
+        $collection->add_external_location_link('s3asm', [
             'userid' => 'privacy:metadata:tool_s3asm:userid',
             'relateduserid' => 'privacy:metadata:tool_s3asm:relateduserid',
             'realuserid' => 'privacy:metadata:tool_s3asm:realuserid',

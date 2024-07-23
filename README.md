@@ -18,7 +18,7 @@ This plugin currently supports Moodle:
 
 ## Installation
 
-1. Get the code and copy/ install it to: `<moodledir>/admin/tool/s3logs`
+1. Get the code and copy/ install it to: `<moodledir>/admin/tool/s3asm`
 2. This plugin also depends on *local_aws* get the code from `https://github.com/catalyst/moodle-local_aws` and copy/ install it into `<moodledir>/local/aws`
 3. Run the upgrade: `sudo -u www-data php admin/cli/upgrade` **Note:** the user may be different to www-data on your system.
 

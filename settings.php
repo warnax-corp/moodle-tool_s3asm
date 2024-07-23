@@ -65,7 +65,7 @@ if ($hassiteconfig) {
 
         // AsM settings.
         $settings->add(new admin_setting_heading('tool_s3asm_archive',
-                get_string('archivesettings', 'tool_s3asm'),
+                get_string('asmsettings', 'tool_s3asm'),
                 ''));
 
         $settings->add(new admin_setting_configtext('tool_s3asm/asmid',
